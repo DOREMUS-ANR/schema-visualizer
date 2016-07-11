@@ -1,0 +1,96 @@
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  stylus dependencies when defined in the bower.json of your dependencies
+ */
+// bower:styl
+// endbower
+
+@import url("//fonts.googleapis.com/css?family=Roboto\+Slab:400,700|Roboto:400,700,700italic,400italic")
+
+@font-face
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
+       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+
+.material-icons
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+
+html
+  font-family 'Roboto Slab', serif
+
+[layout=row]
+  flex-direction row
+
+.browsehappy
+  margin 0.2em 0
+  background #ccc
+  color #000
+  padding 0.2em 0
+
+md-toolbar
+  &.md-default-theme
+    background-color black
+  h1
+    small
+      text-transform uppercase
+      font-size .4em
+      display inline-block
+      vertical-align baseline
+      background #fff
+      color #3f51b5
+      padding 0 .3em
+      line-height 2em
+
+#main-content
+  width: 100%
+
+schema-input
+  padding 1em 2em
+
+md-card
+  max-width 40em
+  margin 1em auto 2em
+  div.md-card-image
+    height 15em
+    background-size cover
+    background-position center 20%
+    background-repeat no-repeat
+
+.waiting-div
+  color #ccc
+  h2
+    font-size 3em
+    text-align center
+  md-icon
+    display block
+    font-size 7em
+    text-align center
+    margin .8em auto 0
+    color inherit

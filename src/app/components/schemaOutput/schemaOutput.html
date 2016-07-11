@@ -1,0 +1,87 @@
+<article ng-hide="main.graphs.length > 0" class="waiting-div">
+  <md-icon>keyboard</md-icon>
+  <h2>Waiting your data</h2>
+</article>
+
+<article ng-repeat="comp in main.graphs | filter: 'CreativeWork' : outCtrl.isInstanceOf">
+  <md-card>
+    <img ng-if="comp.image" ng-src="{{comp.image}}" class="md-card-image">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{comp.name}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <p ng-show="comp.description">
+        {{comp.description | normalizeValue }}
+      </p>
+      <p ng-show="comp.alternateName">
+        <b>Alternate Names:</b>
+        {{comp.alternateName | normalizeValue }}
+      </p>
+      <md-divider></md-divider>
+      <p ng-show="comp.composer">
+        <b>Composer:</b>
+        {{comp.composer | normalizeValue }}
+      </p>
+
+      <p ng-show="comp.mentions">
+        <b>Mentions:</b>
+        {{comp.mentions | normalizeValue }}
+      </p>
+      <p ng-show="comp.musicalKey">
+        <b>Key:</b>
+        {{comp.musicalKey | normalizeValue }}
+      </p>
+      <p ng-show="comp.musicCompositionForm">
+        <b>Music Composition Form:</b>
+        {{comp.musicCompositionForm | normalizeValue }}
+      </p>
+      <p ng-show="comp.genre">
+        <b>Genre:</b>
+        {{comp.genre | normalizeValue }}
+      </p>
+    </md-card-content>
+  </md-card>
+</article>
+
+<article ng-repeat="comp in main.graphs | filter: 'Person' : outCtrl.isInstanceOf">
+  <md-card>
+    <div ng-if="comp.image" ng-style="{'background-image': 'url('+comp.image+')'}" class="md-card-image"></div>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{comp.name}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <p ng-show="comp.description">
+        {{comp.description | normalizeValue }}
+      </p>
+      <md-divider></md-divider>
+      <p ng-show="comp.givenName">
+        <b>Given Name:</b>
+        {{comp.givenName | normalizeValue }}
+      </p>
+      <p ng-show="comp.familyName">
+        <b>Family name:</b>
+        {{comp.familyName | normalizeValue }}
+      </p>
+      <p ng-show="comp.birthDate">
+        <b>Birth Date:</b>
+        {{comp.birthDate | normalizeValue }}
+      </p>
+      <p ng-show="comp.deathDate">
+        <b>Death Date:</b>
+        {{comp.deathDate | normalizeValue }}
+      </p>
+      <p ng-show="comp.musicCompositionForm">
+        <b>Music Composition Form:</b>
+        {{comp.musicCompositionForm | normalizeValue }}
+      </p>
+      <p ng-show="comp.genre">
+        <b>Genre:</b>
+        {{comp.genre | normalizeValue }}
+      </p>
+    </md-card-content>
+  </md-card>
+</article>
