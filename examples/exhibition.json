@@ -1,0 +1,28 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Event",
+  "description": "Exposition The Velvet Underground New York ExtravaganzaDu 30 mars au 21 août 2016 (Espace d’exposition - Philharmonie 1)à l’occasion du 50e anniversaire du fameux « album à la banane », cette exposition fait partager l’histoire et l’héritage d’un groupe éclair (1965-1970), The Velvet Underground, qui a marqué un tournant dans l’histoire de la musique. S’ouvrant sur le paysage de l’Amérique à l’aube des sixties, le parcours met en scène l’émergence de mouvements créatifs marginaux, initialement très minoritaires puis de plus en plus influents. C’est dans ce contexte que se produit la rencontre improbable entre Lou Reed et John Cale. De leur association survoltée naît une alchimie aussi dense qu’éphémère : un univers au son inédit, intrigant et vénéneux. En décembre 1965, Andy Warhol prend cette bande de punks avant l’heure sous son aile dans sa Factory, où ils intègrent une trop parfaite beauté qui se fait appeler Nico. En flirtant avec tous les autres arts, les avant-gardes et la mode, ils bricolent des shows futuristes où fusionnent musique live, projections, light-shows et danses sur des textes crus et une symbolique sexuelle débridée. Trop en avance sur son époque, le groupe échoue commercialement. Après un deuxième album qui joue avec la dynamite, secoué par les excès et les batailles d’ego, le Velvet est donné pour mort en 1968. Il renaît avec deux derniers albums plus sereins et décontractés, qui annoncent la carrière solo de Lou Reed. Mais c’est après sa séparation que le Velvet a vu sa courbe de notoriété grimper en flèche, phénomène unique dans l’histoire du rock. Le Velvet donne envie : ses sonorités fascinent, son esprit captive et son irrévérence intransigeante galvanise les musiciens depuis plusieurs générations, d’Iggy Pop à Nirvana ou les Kills, de Noir Désir à Vanessa Paradis. Commissaires Christian Fevret, Carole MirabelloHoraires:Du mardi au jeudi de 12h à 18h, Le vendredi jusqu'à 22h, le samedi & dimanche de 10h à 20h. Ouverture à partir de 10h pendant les vacances scolaires de la zone C (du 16 au 30 avril 2016) et du 2 juillet au 21 août. Entrée dans l'heure suivant l'horaire réservé. Temps de visite libre.\nRéservez vos places de exposition et musee pour : THE VELVET UNDERGROUND - Espace d'Exposition - Philharmonie\nLe prix des places est compris entre : 7.00 et 12.00 €Date : mercredi 30 mars 2016 au dimanche 21 août 2016\nVous disposez par ailleurs du service e-ticket pour imprimer vos billets à domicile dès la fin de commande pour  THE VELVET UNDERGROUND.\n",
+  "endDate": "2016-08-21",
+  "image": "http://philharmoniedeparis.fr/sites/default/files/styles/event_slide_full/public/velvet_800x800.jpg?itok=vZ3wEOK6",
+  "location": {
+    "@type": "Place",
+    "name": "Espace d'Exposition - Philharmonie",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "France",
+      "addressLocality": " Paris",
+      "postalCode": "75019",
+      "streetAddress": "221, avenue Jean-Jaurès PHILHARMONIE DE PARIS"
+    }
+  },
+  "name": "\nTHE VELVET UNDERGROUND\n",
+  "startDate": "2016-03-30",
+  "url": "http://philharmoniedeparis.fr/en/velvet-underground/home",
+  "offers": [{
+    "@type": "Offer",
+    "name": "Full price",
+    "price": 10,
+    "priceCurrency": "EUR",
+    "url": "https://citm-philharmoniedeparis.shop.secutix.com/selection/event/date?productId=560171048&lang=en"
+  }]
+}

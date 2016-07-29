@@ -37,4 +37,13 @@ class schemaOutputController {
     return encodeURI("https://www.google.fr/maps/place/" + input.name + " " + address);
   }
 
+  sameDate(a, b) {
+    var dateA = new Date(a),
+      dateB = new Date(b);
+
+    return dateA.getFullYear() == dateB.getFullYear() &&
+      dateA.getMonth() == dateB.getMonth() &&
+      dateA.getDate() == dateB.getDate();
+  }
+
 }

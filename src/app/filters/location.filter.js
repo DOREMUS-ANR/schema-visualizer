@@ -14,6 +14,7 @@ export function locationFilter() {
         return input.name + ' in ' + address.addressLocality + ", " + address.addressCountry;
       else {
         let array = [address.streetAddress];
+        if(address.postalCode) array.push(address.postalCode);
         if(address.addressLocality) array.push(address.addressLocality);
         if(address.addressRegion) array.push(address.addressRegion);
         if(address.addressCountry) array.push(address.addressCountry);
