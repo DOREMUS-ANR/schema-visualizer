@@ -1,4 +1,4 @@
-export function sitenameFilter(graphs) {
+export function sitenameFilter() {
   'ngInject';
 
   return (input) => {
