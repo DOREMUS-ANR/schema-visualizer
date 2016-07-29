@@ -34,7 +34,9 @@ class schemaOutputController {
 
   googleMapsLink(input) {
     var address = this.$filter('location')(input, 'fullAddress');
-    return encodeURI("https://www.google.fr/maps/place/" + input.name + " " + address);
+    var name = input.name;
+    if (name.lastIndexOf('-') > -1) name = name.substr(name.lastIndexOf('-') + 1);
+    return encodeURI("https://www.google.fr/maps/place/" + name + " " + address);
   }
 
   sameDate(a, b) {

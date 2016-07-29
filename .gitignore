@@ -40,3 +40,5 @@ jspm_packages
 bower_components
 tmp
 .tmp
+
+dist/
