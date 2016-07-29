@@ -18,6 +18,9 @@
        url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
        url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 
+lightGray = #878787
+lighterGray = #f5f5f5
+
 .material-icons
   font-family: 'Material Icons';
   font-weight: normal;
@@ -43,7 +46,7 @@
   font-feature-settings: 'liga';
 
 html
-  font-family 'Roboto Slab', serif
+  font-family 'Roboto', serif
 
 [layout=row]
   flex-direction row
@@ -82,6 +85,25 @@ md-card
     background-size cover
     background-position center 20%
     background-repeat no-repeat
+  a
+    text-decoration none
+    color #1a0dab
+  p
+    span.light
+      display block
+      color lightGray
+  h3
+    font-weight normal
+    margin-bottom .3em
+  table
+    width 100%
+    border-collapse collapse
+    font-size .8em
+    tr
+      border-top 1px solid lighterGray
+      border-bottom 1px solid lighterGray
+    td
+      padding .7em 0
 
 .waiting-div
   color #ccc
@@ -94,3 +116,11 @@ md-card
     text-align center
     margin .8em auto 0
     color inherit
+
+
+.map-container
+  display block
+  height 15em
+  width 100%
+  ng-map
+    height 15em

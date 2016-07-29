@@ -7,13 +7,15 @@ import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { SchemaInputDirective } from '../app/components/schemaInput/schemaInput.directive';
 import { SchemaOutputDirective } from '../app/components/schemaOutput/schemaOutput.directive';
 import { normalizeValueFilter } from '../app/filters/normalizeValue.filter';
+import { locationFilter } from '../app/filters/location.filter';
+import { sitenameFilter } from '../app/filters/sitename.filter';
 
 var graphs = [];
 graphs.get = function (id) {
   return graphs.find((g) => g['@id'] == id);
 };
 
-angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'toastr'])
+angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'ngMap', 'toastr'])
   .constant('moment', moment)
   .value('graphs', graphs)
   .config(config)
@@ -22,4 +24,6 @@ angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'toastr'])
   .directive('acmeNavbar', NavbarDirective)
   .directive('schemaInput', SchemaInputDirective)
   .directive('schemaOutput', SchemaOutputDirective)
-  .filter('normalizeValue', normalizeValueFilter);
+  .filter('normalizeValue', normalizeValueFilter)
+  .filter('sitename', sitenameFilter)
+  .filter('location', locationFilter);

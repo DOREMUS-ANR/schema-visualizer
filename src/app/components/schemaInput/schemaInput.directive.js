@@ -16,6 +16,34 @@ class schemaInputController {
   constructor($scope, $log, graphs) {
     'ngInject';
 
+    this.input = angular.toJson([{
+      "@context": "http://schema.org",
+      "@type": "MusicEvent",
+      "name": "Lady Gaga",
+      "url": "http://ladygaga.com",
+      "startDate": "2014-11-13T19:30",
+      "doorTime": "18:30",
+      "endDate": "2014-11-13T22:00",
+      "location": {
+        "@type": "Place",
+        "name": "National Indoor Arena",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "King Edwards Rd.",
+          "addressLocality": "Birmingham",
+          "addressCountry": "UK"
+        }
+      },
+      "offers": [{
+        "@type": "Offer",
+        "name": "General Admission",
+        "category": "primary",
+        "price": "100.00",
+        "priceCurrency": "GBP",
+        "url": "http://ticketmaster.com/ticket/17004C29"
+      }]
+    }]);
+
     // this.input = angular.toJson([{
     //   "@context": "http://schema.org",
     //   "@id": "http://data.doremus.org/Self_Contained_Expression/F22/3908d595-bf99-46ca-bd29-19af260e8116",
