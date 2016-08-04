@@ -1,7 +1,7 @@
 # Schema.org Visualizer
 A visualizer for Schema.org.
 
-**DEMO** https://pasqlisena.github.io/schema-visualizer/
+**DEMO** https://doremus-anr.github.io/schema-visualizer/
 
 ## Installation
 
