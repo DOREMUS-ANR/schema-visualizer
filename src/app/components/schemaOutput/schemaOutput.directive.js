@@ -17,15 +17,12 @@ export function SchemaOutputDirective() {
 var schemaOrg;
 
 class schemaOutputController {
-  constructor($filter) {
+  constructor($filter, graphs) {
     'ngInject';
 
     schemaOrg = new SchemaOrg();
     this.$filter = $filter;
-  }
-
-  isInstanceOf(actual, expected) {
-    return schemaOrg.is(actual['@type'], expected);
+    this.graphs = graphs;
   }
 
   googleSearchLink(input) {
@@ -40,12 +37,7 @@ class schemaOutputController {
   }
 
   sameDate(a, b) {
-    var dateA = new Date(a),
-      dateB = new Date(b);
-
-    return dateA.getFullYear() == dateB.getFullYear() &&
-      dateA.getMonth() == dateB.getMonth() &&
-      dateA.getDate() == dateB.getDate();
+    return a.substr(0, 10) == b.substr(0, 10);
   }
 
 }

@@ -80,11 +80,10 @@ schema-input
 md-card
   max-width 40em
   margin 1em auto 2em
-  div.md-card-image
+  h1.md-headline
+    margin 0
+  schema-image.md-card-image
     height 15em
-    background-size cover
-    background-position center 20%
-    background-repeat no-repeat
   a
     text-decoration none
     color #1a0dab
@@ -93,7 +92,6 @@ md-card
       white-space pre-wrap
     span.light
       display block
-      color lightGray
   h3
     font-weight normal
     margin-bottom .3em
@@ -129,7 +127,29 @@ md-card
 
 .double-cover
   background lighterGray
-  height 15em
   overflow hidden
   > *
     height 15em
+
+schema-image > div
+  height 100%
+  background-size cover
+  background-position center 20%
+  background-repeat no-repeat
+
+schema-image.small
+  height 7em
+  width 7em
+  display block
+  background lighterGray
+
+.light
+  color lightGray
+
+performer
+  width 7em
+  display inline-block
+  margin 0 1em
+  font-size .8em
+  p
+    margin .3em 0

@@ -1,12 +1,11 @@
-<article ng-hide="main.graphs.length > 0" class="waiting-div">
+<article ng-hide="outCtrl.graphs.length > 0" class="waiting-div">
   <md-icon>keyboard</md-icon>
   <h2>Waiting your data</h2>
 </article>
-
-<article ng-repeat="comp in main.graphs | filter: 'Event' : outCtrl.isInstanceOf">
+<article ng-repeat="comp in outCtrl.graphs | isSchemaInstanceOf: 'Event'">
   <md-card>
     <div layout="row" class="double-cover">
-      <div flex ng-if="comp.image" ng-style="{'background-image': 'url('+comp.image+')'}" class="md-card-image"></div>
+      <schema-image flex ng-if="comp.image" img="comp.image" class="md-card-image"></schema-image>
       <a flex ng-if="$index<1" ng-href="{{outCtrl.googleMapsLink(comp.location)}}" class="map-container" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCRrWk5ZBS-g9P4FSgymP65ZXyqOp-Xa0w">
         <ng-map zoom="16" center="{{comp.location | location: 'fullAddress'}}" disable-default-u-i="true" scrollwheel="false" disable-double-click-zoom="true" draggable="false">
           <marker position="{{comp.location | location: 'fullAddress'}}"></marker>
@@ -15,10 +14,11 @@
     </div>
     <md-card-title>
       <md-card-title-text>
-        <span class="md-headline">
+        <h1 class="md-headline">
           {{comp.name}}
-          @
-          {{comp.location | location: 'summary'}}</span>
+          <span ng-show="comp.location">@
+            {{comp.location | location: 'summary'}}</span>
+        </h1>
         <span>{{comp.startDate | date: 'EEEE d MMMM y'}}
           <span ng-show="comp.doorTime">,
             {{comp.doorTime}}</span>
@@ -43,92 +43,100 @@
         <table ng-show="comp.offers">
           <tr ng-repeat="o in comp.offers">
             <td>{{o.name}}</td>
-            <td>{{o.price}}
+            <td ng-show="o.price > 0">{{o.price}}
               {{o.priceCurrency}}</td>
             <td>
               <a ng-href="{{o.url}}">{{o.url | sitename }}</a>
             </td>
           </tr>
         </table>
-      </md-card-content>
-    </md-card>
-  </article>
 
-  <article ng-repeat="comp in main.graphs | filter: 'CreativeWork' : outCtrl.isInstanceOf">
-    <md-card>
-      <div flex ng-if="comp.image" ng-style="{'background-image': 'url('+comp.image+')'}" class="md-card-image"></div>
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">{{comp.name}}</span>
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-content>
-        <p ng-show="comp.description">
-          <span class="cr-on">{{comp.description | normalizeValue }}</span>
-        </p>
-        <p ng-show="comp.alternateName">
-          <b>Alternate Names:</b>
-          {{comp.alternateName | normalizeValue }}
-        </p>
-        <md-divider></md-divider>
-        <p ng-show="comp.composer">
-          <b>Composer:</b>
-          {{comp.composer | normalizeValue }}
-        </p>
+        <h3 ng-show="comp.performer">Performers</h3>
+        <div ng-show="comp.performer" class="performer-list">
+          <a ng-repeat="performer in comp.performer" ng-href="{{outCtrl.googleSearchLink(performer.performer.name)}}">
+            <performer performer="performer"></performer>
+          </a>
+        </a>
+      </div>
+    </md-card-content>
+  </md-card>
+</article>
 
-        <p ng-show="comp.mentions">
-          <b>Mentions:</b>
-          {{comp.mentions | normalizeValue }}
-        </p>
-        <p ng-show="comp.musicalKey">
-          <b>Key:</b>
-          {{comp.musicalKey | normalizeValue }}
-        </p>
-        <p ng-show="comp.musicCompositionForm">
-          <b>Music Composition Form:</b>
-          {{comp.musicCompositionForm | normalizeValue }}
-        </p>
-        <p ng-show="comp.genre">
-          <b>Genre:</b>
-          {{comp.genre | normalizeValue }}
-        </p>
-        <p ng-show="comp.isBasedOn">
-          <b>Based on:</b>
-          {{comp.isBasedOn | normalizeValue }}
-        </p>
-      </md-card-content>
-    </md-card>
-  </article>
+<article ng-repeat="comp in outCtrl.graphs | isSchemaInstanceOf: 'CreativeWork'">
+  <md-card>
+    <schema-image ng-if="comp.image" img="comp.image" class="md-card-image"></schema-image>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{comp.name}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <p ng-show="comp.description">
+        <span class="cr-on">{{comp.description | normalizeValue }}</span>
+      </p>
+      <p ng-show="comp.alternateName">
+        <b>Alternate Names:</b>
+        {{comp.alternateName | normalizeValue }}
+      </p>
+      <md-divider></md-divider>
+      <p ng-show="comp.composer">
+        <b>Composer:</b>
+        {{comp.composer | normalizeValue }}
+      </p>
 
-  <article ng-repeat="comp in main.graphs | filter: 'Person' : outCtrl.isInstanceOf">
-    <md-card>
-      <div ng-if="comp.image" ng-style="{'background-image': 'url('+comp.image+')'}" class="md-card-image"></div>
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">{{comp.name}}</span>
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-content>
-        <p ng-show="comp.description">
-          <span class="cr-on">{{comp.description | normalizeValue }}</span>
-        </p>
-        <md-divider></md-divider>
-        <p ng-show="comp.givenName">
-          <b>Given Name:</b>
-          {{comp.givenName | normalizeValue }}
-        </p>
-        <p ng-show="comp.familyName">
-          <b>Family name:</b>
-          {{comp.familyName | normalizeValue }}
-        </p>
-        <p ng-show="comp.birthDate">
-          <b>Birth Date:</b>
-          {{comp.birthDate | normalizeValue }}
-        </p>
-        <p ng-show="comp.deathDate">
-          <b>Death Date:</b>
-          {{comp.deathDate | normalizeValue }}
-        </p>
-      </md-card-content>
-    </md-card>
-  </article>
+      <p ng-show="comp.mentions">
+        <b>Mentions:</b>
+        {{comp.mentions | normalizeValue }}
+      </p>
+      <p ng-show="comp.musicalKey">
+        <b>Key:</b>
+        {{comp.musicalKey | normalizeValue }}
+      </p>
+      <p ng-show="comp.musicCompositionForm">
+        <b>Music Composition Form:</b>
+        {{comp.musicCompositionForm | normalizeValue }}
+      </p>
+      <p ng-show="comp.genre">
+        <b>Genre:</b>
+        {{comp.genre | normalizeValue }}
+      </p>
+      <p ng-show="comp.isBasedOn">
+        <b>Based on:</b>
+        {{comp.isBasedOn | normalizeValue }}
+      </p>
+    </md-card-content>
+  </md-card>
+</article>
+
+<article ng-repeat="comp in outCtrl.graphs | isSchemaInstanceOf : 'Person'">
+  <md-card>
+    <schema-image ng-if="comp.image" img="comp.image" class="md-card-image"></schema-image>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{comp.name}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <p ng-show="comp.description">
+        <span class="cr-on">{{comp.description | normalizeValue }}</span>
+      </p>
+      <md-divider></md-divider>
+      <p ng-show="comp.givenName">
+        <b>Given Name:</b>
+        {{comp.givenName | normalizeValue }}
+      </p>
+      <p ng-show="comp.familyName">
+        <b>Family name:</b>
+        {{comp.familyName | normalizeValue }}
+      </p>
+      <p ng-show="comp.birthDate">
+        <b>Birth Date:</b>
+        {{comp.birthDate | normalizeValue }}
+      </p>
+      <p ng-show="comp.deathDate">
+        <b>Death Date:</b>
+        {{comp.deathDate | normalizeValue }}
+      </p>
+    </md-card-content>
+  </md-card>
+</article>

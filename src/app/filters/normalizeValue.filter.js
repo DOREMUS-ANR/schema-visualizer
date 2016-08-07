@@ -10,6 +10,8 @@ export function normalizeValueFilter(graphs) {
     if (input['@id'])
       return graphs.get(input['@id']).name;
 
+    if (input.name) return input.name;
+    
     return input;
   };
 }
