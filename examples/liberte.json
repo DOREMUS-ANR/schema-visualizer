@@ -85,6 +85,7 @@
   "timeRequired": "PT18M",
   "musicCompositionForm": "Cantate"
 }, {
+  "@context": "http://schema.org/",
   "@id": ":poulenc",
   "@type": "Person",
   "familyName": "Poulenc",
