@@ -6,6 +6,9 @@ export function SchemaInputDirective() {
     templateUrl: 'app/components/schemaInput/schemaInput.html',
     controller: schemaInputController,
     controllerAs: 'ctrl',
+    scope : {
+      input: '='
+    },
     bindToController: true
   };
 
@@ -15,6 +18,9 @@ export function SchemaInputDirective() {
 class schemaInputController {
   constructor($scope, $log, graphs) {
     'ngInject';
+
+    if(graphs && graphs.length)
+      this.input = angular.toJson(graphs);
 
     // this.input = angular.toJson([{
     //   "@context": "http://schema.org/",
@@ -118,10 +124,7 @@ class schemaInputController {
         let obj = angular.fromJson(input);
         if (!angular.isArray(obj)) obj = [obj];
 
-        graphs.splice(0, graphs.length);
-        obj.forEach((elem) => {
-          if (elem) graphs.push(elem);
-        });
+        graphs.replaceWith(obj);
       } catch (e) {
         // do nothing
         $log.error(e);

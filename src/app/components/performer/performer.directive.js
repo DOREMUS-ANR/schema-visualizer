@@ -1,5 +1,3 @@
-import SchemaOrg from 'schema.org';
-
 export function PerformerDirective() {
   'ngInject';
 
@@ -17,12 +15,8 @@ export function PerformerDirective() {
   return directive;
 }
 
-var schemaOrg;
-
 class PerformerController {
   constructor() {
     'ngInject';
-
-    // schemaOrg.is(this.image['@type'], 'ImageObject');
   }
 }

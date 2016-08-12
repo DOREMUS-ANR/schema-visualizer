@@ -2,11 +2,20 @@
   <md-icon>keyboard</md-icon>
   <h2>Waiting your data</h2>
 </article>
+
+<article ng-show="outCtrl.graphs.length > 0" class="permalink-cont">
+  <md-button ng-disabled="outCtrl.permalink || outCtrl.inProgress" ng-click="outCtrl.getPermalink()">get permalink</md-button>
+  {{outCtrl.permalink}}
+  <md-button clipboard ng-show="outCtrl.permalink" text="outCtrl.permalink" on-copied="outCtrl.copied()" on-error="outCtrl.copyFailed(err)" class="md-icon-button" aria-label="Copy">
+    <md-icon>content_copy</md-icon>
+  </md-button>
+</article>
+
 <article ng-repeat="comp in outCtrl.graphs | isSchemaInstanceOf: 'Event'">
   <md-card>
     <div layout="row" class="double-cover">
       <schema-image flex ng-if="comp.image" img="comp.image" class="md-card-image"></schema-image>
-      <a flex ng-if="$index<1" ng-href="{{outCtrl.googleMapsLink(comp.location)}}" class="map-container" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCRrWk5ZBS-g9P4FSgymP65ZXyqOp-Xa0w">
+      <a flex ng-if="$index<1" ng-href="{{outCtrl.googleMapsLink(comp.location)}}" class="map-container" map-lazy-load="https://maps.google.com/maps/api/js?key={{outCtrl.googleKey}}">
         <ng-map zoom="16" center="{{comp.location | location: 'fullAddress'}}" disable-default-u-i="true" scrollwheel="false" disable-double-click-zoom="true" draggable="false">
           <marker position="{{comp.location | location: 'fullAddress'}}"></marker>
         </ng-map>

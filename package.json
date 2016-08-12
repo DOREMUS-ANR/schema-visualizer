@@ -4,6 +4,8 @@
   "scripts": {
     "test": "gulp test"
   },
+  "license": "MIT",
+  "repository": "https://github.com/DOREMUS-ANR/schema-visualizer",
   "devDependencies": {
     "babel-core": "~6.7.4",
     "babel-loader": "~6.2.4",

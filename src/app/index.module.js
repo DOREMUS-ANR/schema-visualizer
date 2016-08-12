@@ -14,12 +14,22 @@ import { sitenameFilter } from '../app/filters/sitename.filter';
 import { isSchemaInstanceOfFilter } from '../app/filters/isSchemaInstanceOf.filter';
 
 var graphs = [];
-graphs.get = function (id) {
+graphs.get = function(id) {
   return graphs.find((g) => g['@id'] == id);
 };
+graphs.replaceWith = function(newGraph) {
+  graphs.splice(0, graphs.length);
+  newGraph.forEach((elem) => {
+    if (elem) graphs.push(elem);
+  });
+};
 
-angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'ngMap', 'toastr'])
+
+
+angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'ngMap', 'toastr', 'angular-clipboard'])
   .constant('moment', moment)
+  .constant('googleKey', 'AIzaSyCRrWk5ZBS-g9P4FSgymP65ZXyqOp-Xa0w')
+  .constant('mlabKey', 'kSJJhR72ClYzcRYmrhpeXlhbXddPE6kf')
   .value('graphs', graphs)
   .config(config)
   .run(runBlock)
