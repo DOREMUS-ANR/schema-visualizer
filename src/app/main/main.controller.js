@@ -1,5 +1,5 @@
 export class MainController {
-  constructor(graphs, $location, $http, $timeout, mlabKey) {
+  constructor(graphs, $location, $http, mlabKey, $rootScope) {
     'ngInject';
 
     this.creationDate = 1467036486462;
@@ -13,14 +13,16 @@ export class MainController {
           if (newGraphs) {
             graphs.replaceWith(newGraphs);
 
-            $timeout(() => {
-              this.permalink = $location.absUrl();
-              this.input = angular.toJson(graphs);
-            }, 200);
+            this.permalink = $location.absUrl();
+            this.input = angular.toJson(graphs);
           }
+          $rootScope.ready = true;
         }, (err) => {
           this._$log.error(err.data.error.message, err);
+          $rootScope.ready = true;
         });
+    } else {
+      $rootScope.ready = true;
     }
     this.graphs = graphs;
   }

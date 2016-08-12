@@ -4,7 +4,7 @@
 </article>
 
 <article ng-show="outCtrl.graphs.length > 0" class="permalink-cont">
-  <md-button ng-disabled="outCtrl.permalink || outCtrl.inProgress" ng-click="outCtrl.getPermalink()">get permalink</md-button>
+  <md-button ng-disabled="outCtrl.inProgress" ng-click="outCtrl.getPermalink()">get permalink</md-button>
   <span class="permalink-text">{{outCtrl.permalink}}</span>
   <md-button clipboard ng-show="outCtrl.permalink" text="outCtrl.permalink" on-copied="outCtrl.copied()" on-error="outCtrl.copyFailed(err)" class="md-icon-button" aria-label="Copy">
     <md-icon>content_copy</md-icon>

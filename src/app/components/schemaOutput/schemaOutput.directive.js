@@ -16,7 +16,7 @@ export function SchemaOutputDirective() {
 }
 
 class schemaOutputController {
-  constructor($filter, $scope, $location, $timeout, $http, $log, $mdToast, mlabKey, graphs, googleKey) {
+  constructor($filter, $scope, $rootScope, $location, $timeout, $http, $log, $mdToast, mlabKey, graphs, googleKey) {
     'ngInject';
 
     this.$filter = $filter;
@@ -28,11 +28,24 @@ class schemaOutputController {
     this.googleKey = googleKey;
     this.mlabKey = mlabKey;
 
-    $scope.$watch(() => this.graphs, (graphs) => {
-      if (!graphs || !graphs.length) return;
+    this.inProgress = true;
 
-      this.inProgress = false;
-    }, true);
+    var readyWatch = $rootScope.$watch(() => $rootScope.ready, (ready) => {
+      if (!ready) return;
+
+      readyWatch();
+
+      this._firstTime = true;
+      $scope.$watch(() => this.graphs, (graphs) => {
+        if (!graphs || !graphs.length) return;
+        if (this._firstTime) {
+          this._firstTime = false;
+          return;
+        }
+
+        this.inProgress = false;
+      }, true);
+    });
   }
 
   getPermalink() {
@@ -53,7 +66,6 @@ class schemaOutputController {
         id: id
       });
       this.permalink = this._$location.absUrl();
-      this.inProgress = false;
     }, (err) => {
       this._$log.error(err.data.error.message, err);
     });

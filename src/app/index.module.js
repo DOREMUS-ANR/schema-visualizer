@@ -24,8 +24,6 @@ graphs.replaceWith = function(newGraph) {
   });
 };
 
-
-
 angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'ngMap', 'toastr', 'angular-clipboard'])
   .constant('moment', moment)
   .constant('googleKey', 'AIzaSyCRrWk5ZBS-g9P4FSgymP65ZXyqOp-Xa0w')
