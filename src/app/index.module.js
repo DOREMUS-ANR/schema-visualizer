@@ -1,6 +1,6 @@
 /* global moment:false */
 
-import { config } from './index.config';
+import { config, keys } from './index.config';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
@@ -12,6 +12,7 @@ import { normalizeValueFilter } from '../app/filters/normalizeValue.filter';
 import { locationFilter } from '../app/filters/location.filter';
 import { sitenameFilter } from '../app/filters/sitename.filter';
 import { isSchemaInstanceOfFilter } from '../app/filters/isSchemaInstanceOf.filter';
+import { PermalinkFactory } from '../app/services/permalink.service';
 
 var graphs = [];
 graphs.get = function(id) {
@@ -24,10 +25,9 @@ graphs.replaceWith = function(newGraph) {
   });
 };
 
-angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'ngMap', 'toastr', 'angular-clipboard'])
+angular.module('schemaVisualizer', ['ngAria', 'ngResource', 'ngMaterial', 'ngMap', 'angular-clipboard'])
   .constant('moment', moment)
-  .constant('googleKey', 'AIzaSyCRrWk5ZBS-g9P4FSgymP65ZXyqOp-Xa0w')
-  .constant('mlabKey', 'kSJJhR72ClYzcRYmrhpeXlhbXddPE6kf')
+  .constant('googleKey', keys.googleKey)
   .value('graphs', graphs)
   .config(config)
   .run(runBlock)
@@ -37,6 +37,7 @@ angular.module('schemaVisualizer', ['ngAria', 'ngMaterial', 'ngMap', 'toastr', '
   .directive('schemaOutput', SchemaOutputDirective)
   .directive('schemaImage', SchemaImageDirective)
   .directive('performer', PerformerDirective)
+  .factory('permalink', PermalinkFactory)
   .filter('normalizeValue', normalizeValueFilter)
   .filter('sitename', sitenameFilter)
   .filter('isSchemaInstanceOf', isSchemaInstanceOfFilter)

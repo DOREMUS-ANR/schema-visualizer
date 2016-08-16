@@ -1,12 +1,11 @@
-export function config ($logProvider, toastrConfig) {
+export function config ($logProvider) {
   'ngInject';
   // Enable log
   $logProvider.debugEnabled(true);
-
-  // Set options third-party lib
-  toastrConfig.allowHtml = true;
-  toastrConfig.timeOut = 3000;
-  toastrConfig.positionClass = 'toast-top-right';
-  toastrConfig.preventDuplicates = true;
-  toastrConfig.progressBar = true;
 }
+
+export const keys = {
+  googleKey: 'AIzaSyCRrWk5ZBS-g9P4FSgymP65ZXyqOp-Xa0w', // key for Google Maps
+  mlabKey: 'kSJJhR72ClYzcRYmrhpeXlhbXddPE6kf', // key for mLab
+  mlabDbName: 'schema-visualizer' // database name on mLab
+};

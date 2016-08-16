@@ -1,5 +1,9 @@
-export function SchemaOutputDirective() {
+var permalinkFactory;
+
+export function SchemaOutputDirective(permalink) {
   'ngInject';
+
+  permalinkFactory = permalink;
 
   let directive = {
     restrict: 'E',
@@ -16,7 +20,7 @@ export function SchemaOutputDirective() {
 }
 
 class schemaOutputController {
-  constructor($filter, $scope, $rootScope, $location, $timeout, $http, $log, $mdToast, mlabKey, graphs, googleKey) {
+  constructor($filter, $scope, $rootScope, $location, $timeout, $http, $log, $mdToast, graphs, googleKey) {
     'ngInject';
 
     this.$filter = $filter;
@@ -26,7 +30,6 @@ class schemaOutputController {
     this._$log = $log;
     this._$mdToast = $mdToast;
     this.googleKey = googleKey;
-    this.mlabKey = mlabKey;
 
     this.inProgress = true;
 
@@ -56,12 +59,10 @@ class schemaOutputController {
     // });
     // console.log(mPack.encode(this.graphs));
 
-    this._$http.post('https://api.mlab.com/api/1/databases/schema-visualizer/collections/permalink?apiKey=' + this.mlabKey, {
+    permalinkFactory.save({
       'data': this.graphs
-    }, {
-      'Content-Type': 'application/json'
-    }).then((res) => {
-      var id = res.data._id.$oid;
+    }, (res) => {
+      var id = res._id.$oid;
       this._$location.search({
         id: id
       });
