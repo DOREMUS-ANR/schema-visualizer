@@ -1,6 +1,8 @@
 # Schema.org Visualizer
 A visualizer for Schema.org.
 
+A limited number of types is currently implemented (see [list](FEATURE_IMPLEMENTED.md)).
+
 **DEMO** https://doremus-anr.github.io/schema-visualizer/
 
 ## Installation
